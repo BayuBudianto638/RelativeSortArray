@@ -1,63 +1,65 @@
+//506. Relative Ranks
+
 #include <iostream>
 #include <string>
 
 void swap(int& a, int& b) {
-    int temp = a;
-    a = b;
-    b = temp;
+	int temp = a;
+	a = b;
+	b = temp;
 }
 
 void Sort(int* arr, int n, int* idx) {
-    for (int i = 0; i < n - 1; i++) {
-        for (int j = 0; j < n - i - 1; j++) {
-            if (arr[j] < arr[j + 1]) {
-                swap(arr[j], arr[j + 1]);
-                swap(idx[j], idx[j + 1]);
-            }
-        }
-    }
+	for (int i = 0; i < n - 1; i++) {
+		for (int j = 0; j < n - i - 1; j++) {
+			if (arr[j] < arr[j + 1]) {
+				swap(arr[j], arr[j + 1]);
+				swap(idx[j], idx[j + 1]);
+			}
+		}
+	}
 }
 
 void cariRanking(int* skor, int n) {
-    int* idx = new int[n];
-    for (int i = 0; i < n; i++) {
-        idx[i] = i;
-    }
+	int* idx = new int[n];
+	for (int i = 0; i < n; i++) {
+		idx[i] = i;
+	}
 
-    Sort(skor, n, idx);
+	Sort(skor, n, idx);
 
-    for (int i = 0; i < n; i++) {
-        if (i == 0) {
-            std::cout << "Gold Medal";
-        }
-        else if (i == 1) {
-            std::cout << "Silver Medal";
-        }
-        else if (i == 2) {
-            std::cout << "Bronze Medal";
-        }
-        else {
-            std::cout << i + 1;
-        }
-        std::cout << " ";
-    }
+	for (int i = 0; i < n; i++) {
+		if (i == 0) {
+			std::cout << "Gold Medal";
+		}
+		else if (i == 1) {
+			std::cout << "Silver Medal";
+		}
+		else if (i == 2) {
+			std::cout << "Bronze Medal";
+		}
+		else {
+			std::cout << i + 1;
+		}
+		std::cout << " ";
+	}
 
-    delete[] idx;
+	delete[] idx;
 }
 
 int main() {
-    int skor[] = { 10, 3, 8, 9, 4 };
-    int n = sizeof(skor) / sizeof(skor[0]);
+	int skor[] = { 10, 3, 8, 9, 4 };
+	int n = sizeof(skor) / sizeof(skor[0]);
 
-    cariRanking(skor, n);
+	cariRanking(skor, n);
 
-    std::cout << std::endl;
+	std::cout << std::endl;
 
-    return 0;
+	return 0;
 }
 
 
-
+//// 1122. Relative Sort Array
 //// RelativeSortArray.cpp : This file contains the 'main' function. Program execution begins and ends there.
 ////
 //
